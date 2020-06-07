@@ -20,6 +20,8 @@
 		D515ED39248CDF8300488DD6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED38248CDF8300488DD6 /* Route.swift */; };
 		D515ED3C248CE0BC00488DD6 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED3B248CE0BC00488DD6 /* StartViewModel.swift */; };
 		D515ED3E248CE13600488DD6 /* SizeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED3D248CE13600488DD6 /* SizeError.swift */; };
+		D515ED41248CE3B200488DD6 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED40248CE3B200488DD6 /* SettingsVC.swift */; };
+		D515ED43248CE42000488DD6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED42248CE42000488DD6 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		D515ED38248CDF8300488DD6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		D515ED3B248CE0BC00488DD6 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		D515ED3D248CE13600488DD6 /* SizeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeError.swift; sourceTree = "<group>"; };
+		D515ED40248CE3B200488DD6 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		D515ED42248CE42000488DD6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				D515ED3A248CE09D00488DD6 /* StartVC */,
+				D515ED3F248CE39B00488DD6 /* SettingsVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -189,6 +194,15 @@
 				D515ED30248CDE8000488DD6 /* StartViewController.swift */,
 			);
 			path = StartVC;
+			sourceTree = "<group>";
+		};
+		D515ED3F248CE39B00488DD6 /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				D515ED40248CE3B200488DD6 /* SettingsVC.swift */,
+				D515ED42248CE42000488DD6 /* SettingsViewController.swift */,
+			);
+			path = SettingsVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,11 +339,13 @@
 				D515ED35248CDF2300488DD6 /* AppStoryboard.swift in Sources */,
 				D515ECFB248CDD9500488DD6 /* AppDelegate.swift in Sources */,
 				D515ED37248CDF4800488DD6 /* UIViewControllerExtensions.swift in Sources */,
+				D515ED43248CE42000488DD6 /* SettingsViewController.swift in Sources */,
 				D515ED39248CDF8300488DD6 /* Route.swift in Sources */,
 				D515ED33248CDEDD00488DD6 /* RoutingProtocol.swift in Sources */,
 				D515ED3C248CE0BC00488DD6 /* StartViewModel.swift in Sources */,
 				D515ED31248CDE8000488DD6 /* StartViewController.swift in Sources */,
 				D515ED3E248CE13600488DD6 /* SizeError.swift in Sources */,
+				D515ED41248CE3B200488DD6 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,5 +51,51 @@
             </objects>
             <point key="canvasLocation" x="139" y="139"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="ces-N3-f9Z">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="PPg-xL-5go" customClass="SettingsViewController" customModule="ChessMovement" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VjG-qX-fal">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Number of Tiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJ0-78-Nzp">
+                                <rect key="frame" x="119.5" y="56" width="175" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Tiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5o-qN-wbA">
+                                <rect key="frame" x="146" y="141" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h6v-Ln-XIL">
+                                <rect key="frame" x="60" y="186" width="294" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RJ0-78-Nzp" firstAttribute="centerX" secondItem="k4M-PG-Jr9" secondAttribute="centerX" id="CZ8-na-asw"/>
+                            <constraint firstItem="Y5o-qN-wbA" firstAttribute="centerX" secondItem="k4M-PG-Jr9" secondAttribute="centerX" id="IK1-3N-yGF"/>
+                            <constraint firstItem="RJ0-78-Nzp" firstAttribute="top" secondItem="k4M-PG-Jr9" secondAttribute="top" constant="12" id="RJX-N0-LTe"/>
+                            <constraint firstItem="h6v-Ln-XIL" firstAttribute="leading" secondItem="k4M-PG-Jr9" secondAttribute="leading" constant="60" id="dyL-n7-sAA"/>
+                            <constraint firstItem="h6v-Ln-XIL" firstAttribute="centerX" secondItem="k4M-PG-Jr9" secondAttribute="centerX" id="jvo-LP-0h0"/>
+                            <constraint firstItem="h6v-Ln-XIL" firstAttribute="top" secondItem="Y5o-qN-wbA" secondAttribute="bottom" constant="24" id="o6p-A9-Ugo"/>
+                            <constraint firstItem="Y5o-qN-wbA" firstAttribute="top" secondItem="RJ0-78-Nzp" secondAttribute="bottom" constant="64" id="rdT-Z0-psG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="k4M-PG-Jr9"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="h6v-Ln-XIL" id="PqO-xH-ZGF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xfg-oM-8J6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="137"/>
+        </scene>
     </scenes>
 </document>

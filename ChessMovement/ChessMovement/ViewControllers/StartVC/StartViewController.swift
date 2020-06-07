@@ -22,7 +22,11 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func onSettingsTapped(_ sender: Any) {
-        // TODO: Open Settings
+        let currentTileAmount = viewModel.numberOfTiles
+        Route.settings(currentTileAmount: currentTileAmount,
+                       onNewTileSelection: { [weak self] newTileAmount in
+                        self?.changeChessboardSize(newTileAmount)
+        }).presentFrom(self)
     }
 
 }
