@@ -22,6 +22,8 @@
 		D515ED3E248CE13600488DD6 /* SizeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED3D248CE13600488DD6 /* SizeError.swift */; };
 		D515ED41248CE3B200488DD6 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED40248CE3B200488DD6 /* SettingsVC.swift */; };
 		D515ED43248CE42000488DD6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED42248CE42000488DD6 /* SettingsViewController.swift */; };
+		D515ED72248CE60E00488DD6 /* ChessboardView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D515ED6E248CE5F400488DD6 /* ChessboardView.framework */; };
+		D515ED73248CE60E00488DD6 /* ChessboardView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D515ED6E248CE5F400488DD6 /* ChessboardView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D515ED74248CE60E00488DD6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D515ED73248CE60E00488DD6 /* ChessboardView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D515ECF7248CDD9500488DD6 /* ChessMovement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessMovement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D515ECFA248CDD9500488DD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D515ED72248CE60E00488DD6 /* ChessboardView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +130,7 @@
 				D515ED10248CDD9900488DD6 /* ChessMovementTests */,
 				D515ED1B248CDD9900488DD6 /* ChessMovementUITests */,
 				D515ECF8248CDD9500488DD6 /* Products */,
+				D515ED71248CE60E00488DD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,6 +248,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D515ED71248CE60E00488DD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,6 +265,7 @@
 				D515ECF3248CDD9500488DD6 /* Sources */,
 				D515ECF4248CDD9500488DD6 /* Frameworks */,
 				D515ECF5248CDD9500488DD6 /* Resources */,
+				D515ED74248CE60E00488DD6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import ChessboardView
 
 class StartViewController: UIViewController {
-    
+    @IBOutlet var chessboard: UIChessboardView!
+
     private var viewModel: StartViewModel = StartViewModel()
 
     override func viewDidLoad() {

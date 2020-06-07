@@ -35,17 +35,27 @@
                                     <action selector="onSettingsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sRw-Se-ZSi"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="414" translatesAutoresizingMaskIntoConstraints="NO" id="zHb-ZV-qyy" customClass="UIChessboardView" customModule="ChessboardView">
+                                <rect key="frame" x="0.0" y="110" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="zHb-ZV-qyy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0X6-Zb-JZU"/>
                             <constraint firstItem="tE1-PV-3l8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="41i-RS-tnG"/>
                             <constraint firstItem="Bpa-ad-6NO" firstAttribute="centerY" secondItem="tE1-PV-3l8" secondAttribute="centerY" id="5iX-EU-nC6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="tE1-PV-3l8" secondAttribute="trailing" constant="24" id="9wX-wQ-E2h"/>
+                            <constraint firstItem="zHb-ZV-qyy" firstAttribute="top" secondItem="tE1-PV-3l8" secondAttribute="bottom" constant="24" id="Gg9-Ki-IdL"/>
                             <constraint firstItem="Bpa-ad-6NO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="24" id="bkv-K4-X8t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zHb-ZV-qyy" secondAttribute="trailing" id="qea-yU-lPO"/>
                             <constraint firstItem="tE1-PV-3l8" firstAttribute="width" secondItem="Bpa-ad-6NO" secondAttribute="width" id="zqX-XW-t9J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="chessboard" destination="zHb-ZV-qyy" id="ldr-9H-F1D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
