@@ -17,6 +17,7 @@
 		D515ED33248CDEDD00488DD6 /* RoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED32248CDEDD00488DD6 /* RoutingProtocol.swift */; };
 		D515ED35248CDF2300488DD6 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED34248CDF2300488DD6 /* AppStoryboard.swift */; };
 		D515ED37248CDF4800488DD6 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED36248CDF4800488DD6 /* UIViewControllerExtensions.swift */; };
+		D515ED39248CDF8300488DD6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED38248CDF8300488DD6 /* Route.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D515ED32248CDEDD00488DD6 /* RoutingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingProtocol.swift; sourceTree = "<group>"; };
 		D515ED34248CDF2300488DD6 /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
 		D515ED36248CDF4800488DD6 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		D515ED38248CDF8300488DD6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			children = (
 				D515ED32248CDEDD00488DD6 /* RoutingProtocol.swift */,
 				D515ED34248CDF2300488DD6 /* AppStoryboard.swift */,
+				D515ED38248CDF8300488DD6 /* Route.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				D515ED35248CDF2300488DD6 /* AppStoryboard.swift in Sources */,
 				D515ECFB248CDD9500488DD6 /* AppDelegate.swift in Sources */,
 				D515ED37248CDF4800488DD6 /* UIViewControllerExtensions.swift in Sources */,
+				D515ED39248CDF8300488DD6 /* Route.swift in Sources */,
 				D515ED33248CDEDD00488DD6 /* RoutingProtocol.swift in Sources */,
 				D515ED31248CDE8000488DD6 /* StartViewController.swift in Sources */,
 			);
