@@ -37,7 +37,8 @@ class StartViewController: UIViewController {
 
 private extension StartViewController {
     private func setUpViews() {
-        chessboard.setUp(knightIcon: UIImage(named: "knight"))
+        chessboard.setUp(knightIcon: UIImage(named: "knight"),
+                         requiredMoves: viewModel.requiredMoves)
     }
     
     private func refreshChessboard() {

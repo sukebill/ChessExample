@@ -14,8 +14,10 @@ public class UIChessboardView: UIView {
     private var imageView: UIImageView?
     private var knightIcon: UIImage?
     private var tiles: [[UIChessTile]] = []
-    var startingPoint: TilePoint?
-    var endingPoint: TilePoint?
+    private var startingPoint: TilePoint?
+    private var endingPoint: TilePoint?
+    private var requiredMoves: Int = 3
+    private var shapeLayers: [CAShapeLayer] = []
    
     public init(frame: CGRect, withNumberOfTiles numberOfTiles: Int, knightIcon: UIImage?) {
         super.init(frame: frame)
@@ -116,6 +118,7 @@ extension UIChessboardView {
             debugPrint("SOMETHING REALLY WRONG HAPPENED!!")
             return
         }
+        calculatePossibleMoves(pathUntilHere: [startingPoint], moveCounter: 0)
     }
 }
 
@@ -138,7 +141,8 @@ extension UIChessboardView {
 // MARK: Public Methods
 
 public extension UIChessboardView {
-    func setUp(knightIcon: UIImage?) {
+    func setUp(knightIcon: UIImage?, requiredMoves: Int) {
+        self.requiredMoves = requiredMoves
         self.knightIcon = knightIcon
     }
     
@@ -153,6 +157,80 @@ public extension UIChessboardView {
     
     /// Clears chessboard from paths and chess pieces
     func clear() {
+        startingPoint = nil
+        endingPoint = nil
+        imageView?.removeFromSuperview()
+        imageView = nil
+        tiles.forEach { $0.deselect() }
+        shapeLayers.forEach { $0.removeFromSuperlayer() }
+        shapeLayers = []
+    }
+}
+
+// MARK: Route Calculation
+private extension UIChessboardView {
+    func calculatePossibleMoves(pathUntilHere: [TilePoint],
+                                moveCounter: Int) {
         
+        guard moveCounter < requiredMoves else {
+            showPathIfNeeded(pathUntilHere)
+            return
+        }
+        guard let startingPoint = pathUntilHere.last else {
+            debugPrint("Path is Empty!!!")
+            return
+        }
+        let possibleMoves = TilePoint.possibleKnighMoves
+        var validMovesResult: [TilePoint] = []
+        for move in possibleMoves {
+            
+            let newPoint = startingPoint + move
+            guard newPoint.x >= 0
+                && newPoint.y >= 0
+                && newPoint.x < numberOfTiles
+                && newPoint.y < numberOfTiles else { continue }
+            validMovesResult.append(newPoint)
+        }
+        
+        for item in validMovesResult {
+            var updatedPath = pathUntilHere
+            updatedPath.append(item)
+            calculatePossibleMoves(pathUntilHere: updatedPath, moveCounter: moveCounter + 1)
+        }
+    }
+    
+    func showPathIfNeeded(_ path: [TilePoint]) {
+        guard let destination = path.last else {
+            debugPrint("Path is Empty!!!")
+            return
+        }
+        guard destination == endingPoint else { return }
+        drawPath(path)
+    }
+    
+    func drawPath(_ path: [TilePoint]) {
+        let bezierPath = UIBezierPath()
+        for point in path {
+            let tile = tiles[point.y][point.x]
+            let tileY = convert(tile.center, from: tile).y
+            if point == startingPoint {
+                bezierPath.move(to: CGPoint(x: tile.center.x, y: tileY))
+            } else {
+                bezierPath.addLine(to: CGPoint(x: tile.center.x, y: tileY))
+            }
+        }
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = bezierPath.cgPath
+        shapeLayer.strokeColor = UIColor.random.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = 4.0
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0
+        animation.duration = 2
+        shapeLayer.add(animation, forKey: "MyAnimation")
+
+        layer.addSublayer(shapeLayer)
+        shapeLayers.append(shapeLayer)
     }
 }

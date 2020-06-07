@@ -10,7 +10,7 @@ import Foundation
 
 struct StartViewModel {
     private (set) var numberOfTiles: Int
-    private let requiredMoves: Int
+    let requiredMoves: Int
     private let bottomRule: Int
     private let upperRule: Int
     
