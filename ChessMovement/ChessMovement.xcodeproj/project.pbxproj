@@ -15,6 +15,8 @@
 		D515ED1D248CDD9900488DD6 /* ChessMovementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED1C248CDD9900488DD6 /* ChessMovementUITests.swift */; };
 		D515ED31248CDE8000488DD6 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED30248CDE8000488DD6 /* StartViewController.swift */; };
 		D515ED33248CDEDD00488DD6 /* RoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED32248CDEDD00488DD6 /* RoutingProtocol.swift */; };
+		D515ED35248CDF2300488DD6 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED34248CDF2300488DD6 /* AppStoryboard.swift */; };
+		D515ED37248CDF4800488DD6 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED36248CDF4800488DD6 /* UIViewControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D515ED1E248CDD9900488DD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D515ED30248CDE8000488DD6 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		D515ED32248CDEDD00488DD6 /* RoutingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingProtocol.swift; sourceTree = "<group>"; };
+		D515ED34248CDF2300488DD6 /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		D515ED36248CDF4800488DD6 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D515ED32248CDEDD00488DD6 /* RoutingProtocol.swift */,
+				D515ED34248CDF2300488DD6 /* AppStoryboard.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 		D515ED2E248CDE3700488DD6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D515ED36248CDF4800488DD6 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,7 +305,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D515ED35248CDF2300488DD6 /* AppStoryboard.swift in Sources */,
 				D515ECFB248CDD9500488DD6 /* AppDelegate.swift in Sources */,
+				D515ED37248CDF4800488DD6 /* UIViewControllerExtensions.swift in Sources */,
 				D515ED33248CDEDD00488DD6 /* RoutingProtocol.swift in Sources */,
 				D515ED31248CDE8000488DD6 /* StartViewController.swift in Sources */,
 			);
