@@ -37,7 +37,7 @@ class StartViewController: UIViewController {
 
 private extension StartViewController {
     private func setUpViews() {
-        // TODO: Set up chessboard
+        chessboard.setUp(knightIcon: UIImage(named: "knight"))
     }
     
     private func refreshChessboard() {

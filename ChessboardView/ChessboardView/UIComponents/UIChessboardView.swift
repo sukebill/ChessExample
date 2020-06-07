@@ -11,6 +11,8 @@ import UIKit
 public class UIChessboardView: UIView {
     @IBInspectable var numberOfTiles: Int = 8
     private var verticalStack: UIStackView!
+    private var imageView: UIImageView?
+    private var knightIcon: UIImage?
     private var tiles: [[UIChessTile]] = []
     var startingPoint: TilePoint?
     var endingPoint: TilePoint?
@@ -69,12 +71,12 @@ extension UIChessboardView {
         horizontalStack.distribution = .fillEqually
         horizontalStack.axis = .horizontal
         var tileRow: [UIChessTile] = []
-        for index in 0..<numberOfTiles {
-            let tile = UIChessTile(coordintates: TilePoint(x: index, y: row))
+        for column in 0..<numberOfTiles {
+            let tile = UIChessTile(coordintates: TilePoint(x: column, y: row))
             tile.onSelection = { [weak self] coordinates in
                 self?.onTileSelected(coordinates)
             }
-            tile.backgroundColor = index % 2 == 0 ? .white : .black
+            tile.backgroundColor = rule.getColour(byIndex: column)
             horizontalStack.addArrangedSubview(tile)
             tileRow.append(tile)
         }
@@ -104,6 +106,7 @@ extension UIChessboardView {
     
     private func setStartingPoint(_ coordinates: TilePoint) {
         startingPoint = coordinates
+        setIcon(coordinates)
     }
     
     private func setEndingPoint(_ coordinates: TilePoint) {
@@ -116,9 +119,29 @@ extension UIChessboardView {
     }
 }
 
+// MARK: Icon Generation
+
+extension UIChessboardView {
+    func setIcon(_ coordinates: TilePoint) {
+        let tile = tiles[coordinates.y][coordinates.x]
+        let parentReferenceY = convert(tile.center, from: tile).y
+        let imageView = UIImageView(frame: tile.bounds)
+        imageView.image = knightIcon
+        imageView.center = CGPoint(x: tile.center.x, y: parentReferenceY)
+        imageView.contentMode = .scaleAspectFit
+        addSubview(imageView)
+        bringSubviewToFront(imageView)
+        self.imageView = imageView
+    }
+}
+
 // MARK: Public Methods
 
 public extension UIChessboardView {
+    func setUp(knightIcon: UIImage?) {
+        self.knightIcon = knightIcon
+    }
+    
     /// Clears all tiles and rebuilds them
     /// - Parameter numberOfTiles: the number of tiles (number * number)
     func refresh(withNumberOfTiles numberOfTiles: Int) {
