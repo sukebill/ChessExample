@@ -41,11 +41,12 @@ private extension StartViewController {
     }
     
     private func refreshChessboard() {
-        // TODO: Refresh Chessboard
+        let numberOfTiles = viewModel.numberOfTiles
+        chessboard.refresh(withNumberOfTiles: numberOfTiles)
     }
     
     private func clearChessboard() {
-        // TODO: Clear Chessboard from paths and starting - ending possitions
+        chessboard.clear()
     }
 }
 

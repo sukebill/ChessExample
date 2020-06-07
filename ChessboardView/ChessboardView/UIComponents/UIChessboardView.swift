@@ -11,6 +11,7 @@ import UIKit
 public class UIChessboardView: UIView {
     @IBInspectable var numberOfTiles: Int = 8
     private var verticalStack: UIStackView!
+    private var tiles: [[UIButton]] = []
    
     public init(frame: CGRect, withNumberOfTiles numberOfTiles: Int, knightIcon: UIImage?) {
         super.init(frame: frame)
@@ -64,11 +65,37 @@ extension UIChessboardView {
         horizontalStack.alignment = .fill
         horizontalStack.distribution = .fillEqually
         horizontalStack.axis = .horizontal
+        var tileRow: [UIButton] = []
         for index in 0..<numberOfTiles {
             let tile = UIButton()
             tile.backgroundColor = index % 2 == 0 ? .white : .black
             horizontalStack.addArrangedSubview(tile)
+            tileRow.append(tile)
         }
         verticalStack.addArrangedSubview(horizontalStack)
+        tiles.append(tileRow)
+    }
+    
+    func clearTiles() {
+        verticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        clear()
+    }
+}
+
+// MARK: Public Methods
+
+public extension UIChessboardView {
+    /// Clears all tiles and rebuilds them
+    /// - Parameter numberOfTiles: the number of tiles (number * number)
+    func refresh(withNumberOfTiles numberOfTiles: Int) {
+        self.numberOfTiles = numberOfTiles
+        tiles = []
+        clearTiles()
+        setUpTiles()
+    }
+    
+    /// Clears chessboard from paths and chess pieces
+    func clear() {
+        
     }
 }
