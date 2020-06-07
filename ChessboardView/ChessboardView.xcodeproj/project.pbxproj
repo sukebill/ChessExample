@@ -11,6 +11,9 @@
 		D515ED5D248CE5F300488DD6 /* ChessboardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED5C248CE5F300488DD6 /* ChessboardViewTests.swift */; };
 		D515ED5F248CE5F300488DD6 /* ChessboardView.h in Headers */ = {isa = PBXBuildFile; fileRef = D515ED51248CE5F300488DD6 /* ChessboardView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D515ED79248CE66300488DD6 /* UIChessboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED78248CE66300488DD6 /* UIChessboardView.swift */; };
+		D515ED7B248CE8DB00488DD6 /* UIChessTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED7A248CE8DB00488DD6 /* UIChessTile.swift */; };
+		D515ED7D248CE92400488DD6 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED7C248CE92400488DD6 /* UIButtonExtensions.swift */; };
+		D515ED7F248CE94B00488DD6 /* TilePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED7E248CE94B00488DD6 /* TilePoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,9 @@
 		D515ED5C248CE5F300488DD6 /* ChessboardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessboardViewTests.swift; sourceTree = "<group>"; };
 		D515ED5E248CE5F300488DD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D515ED78248CE66300488DD6 /* UIChessboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChessboardView.swift; sourceTree = "<group>"; };
+		D515ED7A248CE8DB00488DD6 /* UIChessTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChessTile.swift; sourceTree = "<group>"; };
+		D515ED7C248CE92400488DD6 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		D515ED7E248CE94B00488DD6 /* TilePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilePoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		D515ED75248CE61E00488DD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D515ED7E248CE94B00488DD6 /* TilePoint.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				D515ED78248CE66300488DD6 /* UIChessboardView.swift */,
+				D515ED7A248CE8DB00488DD6 /* UIChessTile.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 		D515ED77248CE63100488DD6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D515ED7C248CE92400488DD6 /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,6 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D515ED7D248CE92400488DD6 /* UIButtonExtensions.swift in Sources */,
+				D515ED7B248CE8DB00488DD6 /* UIChessTile.swift in Sources */,
+				D515ED7F248CE94B00488DD6 /* TilePoint.swift in Sources */,
 				D515ED79248CE66300488DD6 /* UIChessboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

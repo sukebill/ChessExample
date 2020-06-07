@@ -11,7 +11,9 @@ import UIKit
 public class UIChessboardView: UIView {
     @IBInspectable var numberOfTiles: Int = 8
     private var verticalStack: UIStackView!
-    private var tiles: [[UIButton]] = []
+    private var tiles: [[UIChessTile]] = []
+    var startingPoint: TilePoint?
+    var endingPoint: TilePoint?
    
     public init(frame: CGRect, withNumberOfTiles numberOfTiles: Int, knightIcon: UIImage?) {
         super.init(frame: frame)
@@ -51,8 +53,8 @@ extension UIChessboardView {
         guard numberOfTiles > 0 else {
             fatalError("Size can't be less than or equal to 0")
         }
-        for _ in 0..<numberOfTiles {
-            addChessboardHorizontalRow()
+        for row in 0..<numberOfTiles {
+            addChessboardHorizontalRow(row: row)
         }
     }
     
@@ -60,14 +62,17 @@ extension UIChessboardView {
     /// - Parameters:
     ///   - row: the row (Index) to be build
     ///   - rule: Rule for starting with light or dark colour of rectangle
-    func addChessboardHorizontalRow() {
+    func addChessboardHorizontalRow(row: Int) {
         let horizontalStack = UIStackView()
         horizontalStack.alignment = .fill
         horizontalStack.distribution = .fillEqually
         horizontalStack.axis = .horizontal
-        var tileRow: [UIButton] = []
+        var tileRow: [UIChessTile] = []
         for index in 0..<numberOfTiles {
-            let tile = UIButton()
+            let tile = UIChessTile(coordintates: TilePoint(x: index, y: row))
+            tile.onSelection = { [weak self] coordinates in
+                self?.onTileSelected(coordinates)
+            }
             tile.backgroundColor = index % 2 == 0 ? .white : .black
             horizontalStack.addArrangedSubview(tile)
             tileRow.append(tile)
@@ -79,6 +84,34 @@ extension UIChessboardView {
     func clearTiles() {
         verticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
         clear()
+    }
+}
+
+// MARK: UI Chess Tile Callback
+
+extension UIChessboardView {
+    func onTileSelected(_ coordinate: TilePoint) {
+        switch (startingPoint, endingPoint) {
+        case (nil, nil):
+            setStartingPoint(coordinate)
+        case (.some(_), nil):
+            setEndingPoint(coordinate)
+        default:
+            return
+        }
+    }
+    
+    private func setStartingPoint(_ coordinates: TilePoint) {
+        startingPoint = coordinates
+    }
+    
+    private func setEndingPoint(_ coordinates: TilePoint) {
+        endingPoint = coordinates
+        tiles[coordinates.y][coordinates.x].select()
+        guard let startingPoint = startingPoint  else {
+            debugPrint("SOMETHING REALLY WRONG HAPPENED!!")
+            return
+        }
     }
 }
 
