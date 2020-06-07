@@ -14,6 +14,7 @@
 		D515ED7B248CE8DB00488DD6 /* UIChessTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED7A248CE8DB00488DD6 /* UIChessTile.swift */; };
 		D515ED7D248CE92400488DD6 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED7C248CE92400488DD6 /* UIButtonExtensions.swift */; };
 		D515ED7F248CE94B00488DD6 /* TilePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED7E248CE94B00488DD6 /* TilePoint.swift */; };
+		D515ED81248CEA2600488DD6 /* ColourRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED80248CEA2600488DD6 /* ColourRule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		D515ED7A248CE8DB00488DD6 /* UIChessTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChessTile.swift; sourceTree = "<group>"; };
 		D515ED7C248CE92400488DD6 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		D515ED7E248CE94B00488DD6 /* TilePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilePoint.swift; sourceTree = "<group>"; };
+		D515ED80248CEA2600488DD6 /* ColourRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourRule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D515ED7E248CE94B00488DD6 /* TilePoint.swift */,
+				D515ED80248CEA2600488DD6 /* ColourRule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				D515ED7B248CE8DB00488DD6 /* UIChessTile.swift in Sources */,
 				D515ED7F248CE94B00488DD6 /* TilePoint.swift in Sources */,
 				D515ED79248CE66300488DD6 /* UIChessboardView.swift in Sources */,
+				D515ED81248CEA2600488DD6 /* ColourRule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

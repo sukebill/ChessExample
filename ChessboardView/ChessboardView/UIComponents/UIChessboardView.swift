@@ -54,7 +54,8 @@ extension UIChessboardView {
             fatalError("Size can't be less than or equal to 0")
         }
         for row in 0..<numberOfTiles {
-            addChessboardHorizontalRow(row: row)
+            let rule: ColourRule = row % 2 == 0 ? .lightFirst : .darkFirst
+            addChessboardHorizontalRow(row: row, rule: rule)
         }
     }
     
@@ -62,7 +63,7 @@ extension UIChessboardView {
     /// - Parameters:
     ///   - row: the row (Index) to be build
     ///   - rule: Rule for starting with light or dark colour of rectangle
-    func addChessboardHorizontalRow(row: Int) {
+    func addChessboardHorizontalRow(row: Int, rule: ColourRule) {
         let horizontalStack = UIStackView()
         horizontalStack.alignment = .fill
         horizontalStack.distribution = .fillEqually
