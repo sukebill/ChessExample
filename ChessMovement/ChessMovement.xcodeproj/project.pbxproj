@@ -39,6 +39,20 @@
 			remoteGlobalIDString = D515ECF6248CDD9500488DD6;
 			remoteInfo = ChessMovement;
 		};
+		D515ED6D248CE5F400488DD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D515ED4E248CE5F300488DD6;
+			remoteInfo = ChessboardView;
+		};
+		D515ED6F248CE5F400488DD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D515ED57248CE5F300488DD6;
+			remoteInfo = ChessboardViewTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +77,7 @@
 		D515ED3D248CE13600488DD6 /* SizeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeError.swift; sourceTree = "<group>"; };
 		D515ED40248CE3B200488DD6 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D515ED42248CE42000488DD6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChessboardView.xcodeproj; path = ../ChessboardView/ChessboardView.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +108,7 @@
 		D515ECEE248CDD9500488DD6 = {
 			isa = PBXGroup;
 			children = (
+				D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */,
 				D515ECF9248CDD9500488DD6 /* ChessMovement */,
 				D515ED10248CDD9900488DD6 /* ChessMovementTests */,
 				D515ED1B248CDD9900488DD6 /* ChessMovementUITests */,
@@ -205,6 +221,15 @@
 			path = SettingsVC;
 			sourceTree = "<group>";
 		};
+		D515ED69248CE5F300488DD6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D515ED6E248CE5F400488DD6 /* ChessboardView.framework */,
+				D515ED70248CE5F400488DD6 /* ChessboardViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,6 +320,12 @@
 			mainGroup = D515ECEE248CDD9500488DD6;
 			productRefGroup = D515ECF8248CDD9500488DD6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D515ED69248CE5F300488DD6 /* Products */;
+					ProjectRef = D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D515ECF6248CDD9500488DD6 /* ChessMovement */,
@@ -303,6 +334,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D515ED6E248CE5F400488DD6 /* ChessboardView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChessboardView.framework;
+			remoteRef = D515ED6D248CE5F400488DD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D515ED70248CE5F400488DD6 /* ChessboardViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChessboardViewTests.xctest;
+			remoteRef = D515ED6F248CE5F400488DD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D515ECF5248CDD9500488DD6 /* Resources */ = {
