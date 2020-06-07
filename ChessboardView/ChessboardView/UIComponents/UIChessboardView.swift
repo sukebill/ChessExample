@@ -18,6 +18,7 @@ public class UIChessboardView: UIView {
     private var endingPoint: TilePoint?
     private var requiredMoves: Int = 3
     private var shapeLayers: [CAShapeLayer] = []
+    public var onPathCalculated: (([TilePoint]) -> Void)?
    
     public init(frame: CGRect, withNumberOfTiles numberOfTiles: Int, knightIcon: UIImage?) {
         super.init(frame: frame)
@@ -212,9 +213,11 @@ private extension UIChessboardView {
         }
         guard destination == endingPoint else { return }
 //        let normalPath = path.buildKnightPath(mirrored: false)
-        drawPath(path)
+//        drawPath(normalPath)
 //        let mirroredPath = path.buildKnightPath(mirrored: true)
 //        drawPath(mirroredPath)
+        drawPath(path)
+        onPathCalculated?(path)
     }
     
     /// Draws the Basier Path and animates it

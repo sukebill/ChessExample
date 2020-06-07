@@ -24,6 +24,7 @@
 		D515ED43248CE42000488DD6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED42248CE42000488DD6 /* SettingsViewController.swift */; };
 		D515ED72248CE60E00488DD6 /* ChessboardView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D515ED6E248CE5F400488DD6 /* ChessboardView.framework */; };
 		D515ED73248CE60E00488DD6 /* ChessboardView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D515ED6E248CE5F400488DD6 /* ChessboardView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D515ED86248D567800488DD6 /* PathTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED85248D567800488DD6 /* PathTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		D515ED40248CE3B200488DD6 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D515ED42248CE42000488DD6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChessboardView.xcodeproj; path = ../ChessboardView/ChessboardView.xcodeproj; sourceTree = "<group>"; };
+		D515ED85248D567800488DD6 /* PathTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 			children = (
 				D515ED3B248CE0BC00488DD6 /* StartViewModel.swift */,
 				D515ED30248CDE8000488DD6 /* StartViewController.swift */,
+				D515ED85248D567800488DD6 /* PathTableViewCell.swift */,
 			);
 			path = StartVC;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D515ED35248CDF2300488DD6 /* AppStoryboard.swift in Sources */,
+				D515ED86248D567800488DD6 /* PathTableViewCell.swift in Sources */,
 				D515ECFB248CDD9500488DD6 /* AppDelegate.swift in Sources */,
 				D515ED37248CDF4800488DD6 /* UIViewControllerExtensions.swift in Sources */,
 				D515ED43248CE42000488DD6 /* SettingsViewController.swift in Sources */,

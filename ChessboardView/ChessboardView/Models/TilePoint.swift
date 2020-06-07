@@ -8,9 +8,10 @@
 
 import Foundation
 
-struct TilePoint {
+public struct TilePoint {
     var x: Int
     var y: Int
+    public var description: String { "(\(x),\(y))" }
 }
 
 extension TilePoint {
@@ -27,7 +28,7 @@ extension TilePoint {
 }
 
 extension TilePoint: Equatable {
-    static func == (lhs: Self, rhs: Self) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y
     }
     
@@ -36,6 +37,7 @@ extension TilePoint: Equatable {
     }
 }
 
+// MARK: Tried to draw 'L' shaped lines but I didn't like the end result
 
 extension TilePoint {
     /// Calculates an 'L' shaped path for the knight to take
@@ -93,5 +95,15 @@ extension Array where Element == TilePoint {
             completedPath.append(contentsOf: knightMove)
         }
         return completedPath
+    }
+    
+    public var description: String {
+        var resultString = ""
+        for index in 0..<count {
+            resultString += self[index].description
+            guard index < count - 1 else { continue }
+            resultString += " -> "
+        }
+        return resultString
     }
 }
