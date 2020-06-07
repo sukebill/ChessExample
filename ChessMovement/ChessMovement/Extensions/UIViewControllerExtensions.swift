@@ -14,4 +14,11 @@ extension UIViewController {
     class func instantiate(fromAppStoryboard appStoryboard: AppStoryboard) -> Self {
         return appStoryboard.viewController(viewControllerClass: self)
     }
+    
+    func showAlert(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true, completion: nil)
+    }
 }

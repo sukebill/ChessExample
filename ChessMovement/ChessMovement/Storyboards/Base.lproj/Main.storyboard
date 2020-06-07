@@ -15,7 +15,35 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tE1-PV-3l8">
+                                <rect key="frame" x="119" y="56" width="64" height="30"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="0.92941176469999998" green="0.2156862745" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onResetTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pTX-9l-rWc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpa-ad-6NO">
+                                <rect key="frame" x="231" y="56" width="64" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="ZTz-HK-uBf"/>
+                                </constraints>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="onSettingsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sRw-Se-ZSi"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="tE1-PV-3l8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="41i-RS-tnG"/>
+                            <constraint firstItem="Bpa-ad-6NO" firstAttribute="centerY" secondItem="tE1-PV-3l8" secondAttribute="centerY" id="5iX-EU-nC6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="tE1-PV-3l8" secondAttribute="trailing" constant="24" id="9wX-wQ-E2h"/>
+                            <constraint firstItem="Bpa-ad-6NO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="24" id="bkv-K4-X8t"/>
+                            <constraint firstItem="tE1-PV-3l8" firstAttribute="width" secondItem="Bpa-ad-6NO" secondAttribute="width" id="zqX-XW-t9J"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
