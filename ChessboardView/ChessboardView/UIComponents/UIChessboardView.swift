@@ -169,9 +169,12 @@ public extension UIChessboardView {
 
 // MARK: Route Calculation
 private extension UIChessboardView {
-    func calculatePossibleMoves(pathUntilHere: [TilePoint],
-                                moveCounter: Int) {
-        
+    /// Searches and finds valid moves for the chess piece.
+    /// Recursively builds a valid path and if it reaches the destination, draws it.
+    /// - Parameters:
+    ///   - pathUntilHere: The TilePoint Array (path) that's been calculated already
+    ///   - moveCounter: move number, e.g. move number 2
+    func calculatePossibleMoves(pathUntilHere: [TilePoint], moveCounter: Int) {
         guard moveCounter < requiredMoves else {
             showPathIfNeeded(pathUntilHere)
             return
@@ -185,29 +188,37 @@ private extension UIChessboardView {
         for move in possibleMoves {
             
             let newPoint = startingPoint + move
-            guard newPoint.x >= 0
+            let isBetweenBounds = newPoint.x >= 0
                 && newPoint.y >= 0
                 && newPoint.x < numberOfTiles
-                && newPoint.y < numberOfTiles else { continue }
+                && newPoint.y < numberOfTiles
+            guard isBetweenBounds else { continue }
             validMovesResult.append(newPoint)
         }
         
-        for item in validMovesResult {
+        validMovesResult.forEach {
             var updatedPath = pathUntilHere
-            updatedPath.append(item)
+            updatedPath.append($0)
             calculatePossibleMoves(pathUntilHere: updatedPath, moveCounter: moveCounter + 1)
         }
     }
     
+    /// Draws a line if the path array isn't empty & if it has reached the destination Point
+    /// - Parameter path: the Path through the tiles to draw
     func showPathIfNeeded(_ path: [TilePoint]) {
         guard let destination = path.last else {
             debugPrint("Path is Empty!!!")
             return
         }
         guard destination == endingPoint else { return }
+//        let normalPath = path.buildKnightPath(mirrored: false)
         drawPath(path)
+//        let mirroredPath = path.buildKnightPath(mirrored: true)
+//        drawPath(mirroredPath)
     }
     
+    /// Draws the Basier Path and animates it
+    /// - Parameter path: the Path through the tiles to draw
     func drawPath(_ path: [TilePoint]) {
         let bezierPath = UIBezierPath()
         for point in path {
