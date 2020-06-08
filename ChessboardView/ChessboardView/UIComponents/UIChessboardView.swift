@@ -92,38 +92,19 @@ extension UIChessboardView {
         verticalStack.addArrangedSubview(horizontalStack)
         tiles.append(tileRow)
     }
-    
-    func clearTiles() {
-        verticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        clear()
-    }
-    
-    func clearPaths() {
-        shapeLayers.forEach { $0.removeFromSuperlayer() }
-        shapeLayers = []
-    }
 }
 
-// MARK: UI Chess Tile Callback
+// MARK: Local Mutations
 
 extension UIChessboardView {
-    func onTileSelected(_ coordinate: TilePoint) {
-        switch (startingPoint, endingPoint) {
-        case (nil, nil):
-            setStartingPoint(coordinate)
-        case (.some(_), nil):
-            setEndingPoint(coordinate)
-        default:
-            return
-        }
-    }
-    
-    private func setStartingPoint(_ coordinates: TilePoint) {
+    func setStartingPoint(_ coordinates: TilePoint) {
         startingPoint = coordinates
         setIcon(coordinates)
     }
     
-    private func setEndingPoint(_ coordinates: TilePoint) {
+    /// Sets ending point (destination) and if starting point exists, calculates possible moves
+    /// - Parameter coordinates: coordinate (TilePoint) to set for destination
+    func setEndingPoint(_ coordinates: TilePoint) {
         endingPoint = coordinates
         tiles[coordinates.y][coordinates.x].select()
         guard let startingPoint = startingPoint  else {
@@ -134,21 +115,15 @@ extension UIChessboardView {
             self.calculatePossibleMoves(startingFrom: startingPoint)
         }
     }
-}
-
-// MARK: Icon Generation
-
-extension UIChessboardView {
-    func setIcon(_ coordinates: TilePoint) {
-        let tile = tiles[coordinates.y][coordinates.x]
-        let parentReferenceY = convert(tile.center, from: tile).y
-        let imageView = UIImageView(frame: tile.bounds)
-        imageView.image = knightIcon
-        imageView.center = CGPoint(x: tile.center.x, y: parentReferenceY)
-        imageView.contentMode = .scaleAspectFit
-        addSubview(imageView)
-        bringSubviewToFront(imageView)
-        self.imageView = imageView
+    
+    func clearTiles() {
+        verticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        clear()
+    }
+    
+    func clearPaths() {
+        shapeLayers.forEach { $0.removeFromSuperlayer() }
+        shapeLayers = []
     }
 }
 
@@ -180,7 +155,41 @@ public extension UIChessboardView {
     }
 }
 
+// MARK: UI Chess Tile Callback
+
+extension UIChessboardView {
+    /// Sets starting or ending point
+    /// - Parameter coordinate: coordinate (TilePoint) that was selected
+    func onTileSelected(_ coordinate: TilePoint) {
+        switch (startingPoint, endingPoint) {
+        case (nil, nil):
+            setStartingPoint(coordinate)
+        case (.some(_), nil):
+            setEndingPoint(coordinate)
+        default:
+            return
+        }
+    }
+}
+
+// MARK: Icon Generation
+
+extension UIChessboardView {
+    func setIcon(_ coordinates: TilePoint) {
+        let tile = tiles[coordinates.y][coordinates.x]
+        let parentReferenceY = convert(tile.center, from: tile).y
+        let imageView = UIImageView(frame: tile.bounds)
+        imageView.image = knightIcon
+        imageView.center = CGPoint(x: tile.center.x, y: parentReferenceY)
+        imageView.contentMode = .scaleAspectFit
+        addSubview(imageView)
+        bringSubviewToFront(imageView)
+        self.imageView = imageView
+    }
+}
+
 // MARK: Route Calculation
+
 private extension UIChessboardView {
     /// Takes starting possition and Calculates every possible valid path based on the required moves.
     /// Each path that has reached the destination is draw
@@ -198,7 +207,7 @@ private extension UIChessboardView {
         paths.forEach {
             showPathIfNeeded($0)
         }
-        guard totalPathsToTry == totalPathsFailed else { return }
+        guard totalPathsFailed == totalPathsToTry else { return }
         fireError()
     }
     
@@ -283,7 +292,7 @@ private extension UIChessboardView {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
         animation.duration = 2
-        shapeLayer.add(animation, forKey: "MyAnimation")
+        shapeLayer.add(animation, forKey: "pathANimation")
 
         layer.addSublayer(shapeLayer)
         shapeLayers.append(shapeLayer)
