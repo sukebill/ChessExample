@@ -12,6 +12,7 @@ import ChessboardView
 class StartViewController: UIViewController {
     @IBOutlet var chessboard: UIChessboardView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var failureView: UIView!
     
     private var viewModel: StartViewModel = StartViewModel()
 
@@ -40,9 +41,7 @@ private extension StartViewController {
     private func setUpViews() {
         chessboard.setUp(knightIcon: UIImage(named: "knight"),
                          requiredMoves: viewModel.requiredMoves)
-        chessboard.onPathCalculated = { [weak self] path in
-            self?.onPathCalculated(path)
-        }
+        chessboard.delegate = self
         tableView.dataSource = self
     }
     
@@ -51,12 +50,14 @@ private extension StartViewController {
         let numberOfTiles = viewModel.numberOfTiles
         chessboard.refresh(withNumberOfTiles: numberOfTiles)
         tableView.reloadData()
+        failureView.isHidden = true
     }
     
     private func clearChessboard() {
         chessboard.clear()
         viewModel.clearPaths()
         tableView.reloadData()
+        failureView.isHidden = true
     }
 }
 
@@ -74,10 +75,18 @@ private extension StartViewController {
             showAlert(message: "Something went realy wrong!!!")
         }
     }
-    
-    func onPathCalculated(_ path: [TilePoint]) {
+}
+
+// MARK: UI Chessboard Delegate
+
+extension StartViewController: UIChessboardDelegate {
+    func didCalculate(_ path: [TilePoint]) {
         viewModel.addPath(path)
         tableView.reloadData()
+    }
+    
+    func didFailFindingPaths() {
+        failureView.isHidden = false
     }
 }
 
@@ -89,7 +98,8 @@ extension StartViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PathTableViewCell", for: indexPath) as! PathTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PathTableViewCell",
+                                                 for: indexPath) as! PathTableViewCell
         cell.configure(with: viewModel.paths[indexPath.row])
         return cell
     }

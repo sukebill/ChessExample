@@ -8,6 +8,11 @@
 
 import UIKit
 
+public protocol UIChessboardDelegate: class {
+    func didCalculate(_ path: [TilePoint])
+    func didFailFindingPaths()
+}
+
 public class UIChessboardView: UIView {
     @IBInspectable var numberOfTiles: Int = 8
     private var verticalStack: UIStackView!
@@ -18,7 +23,8 @@ public class UIChessboardView: UIView {
     private var endingPoint: TilePoint?
     private var requiredMoves: Int = 3
     private var shapeLayers: [CAShapeLayer] = []
-    public var onPathCalculated: (([TilePoint]) -> Void)?
+    private var totalPathsFailed: Int = 0
+    weak public var delegate: UIChessboardDelegate?
    
     public init(frame: CGRect, withNumberOfTiles numberOfTiles: Int, knightIcon: UIImage?) {
         super.init(frame: frame)
@@ -91,6 +97,11 @@ extension UIChessboardView {
         verticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
         clear()
     }
+    
+    func clearPaths() {
+        shapeLayers.forEach { $0.removeFromSuperlayer() }
+        shapeLayers = []
+    }
 }
 
 // MARK: UI Chess Tile Callback
@@ -119,7 +130,9 @@ extension UIChessboardView {
             debugPrint("SOMETHING REALLY WRONG HAPPENED!!")
             return
         }
-        calculatePossibleMoves(pathUntilHere: [startingPoint], moveCounter: 0)
+        DispatchQueue.init(label: "pathBG", qos: .background).async {
+            self.calculatePossibleMoves(startingFrom: startingPoint)
+        }
     }
 }
 
@@ -163,45 +176,62 @@ public extension UIChessboardView {
         imageView?.removeFromSuperview()
         imageView = nil
         tiles.forEach { $0.deselect() }
-        shapeLayers.forEach { $0.removeFromSuperlayer() }
-        shapeLayers = []
+        clearPaths()
     }
 }
 
 // MARK: Route Calculation
 private extension UIChessboardView {
-    /// Searches and finds valid moves for the chess piece.
-    /// Recursively builds a valid path and if it reaches the destination, draws it.
+    /// Takes starting possition and Calculates every possible valid path based on the required moves.
+    /// Each path that has reached the destination is draw
+    /// If none has reached the destination, the Failure Error is Fired.
     /// - Parameters:
     ///   - pathUntilHere: The TilePoint Array (path) that's been calculated already
     ///   - moveCounter: move number, e.g. move number 2
-    func calculatePossibleMoves(pathUntilHere: [TilePoint], moveCounter: Int) {
-        guard moveCounter < requiredMoves else {
-            showPathIfNeeded(pathUntilHere)
-            return
+    func calculatePossibleMoves(startingFrom startingPoint: TilePoint) {
+        var paths: [[TilePoint]] = [[startingPoint]]
+        for _ in 0..<requiredMoves {
+            paths = calculatePaths(paths: paths)
         }
-        guard let startingPoint = pathUntilHere.last else {
-            debugPrint("Path is Empty!!!")
-            return
+        let totalPathsToTry = paths.count
+        totalPathsFailed = 0
+        paths.forEach {
+            showPathIfNeeded($0)
         }
-        let possibleMoves = TilePoint.possibleKnighMoves
-        var validMovesResult: [TilePoint] = []
-        for move in possibleMoves {
+        guard totalPathsToTry == totalPathsFailed else { return }
+        fireError()
+    }
+    
+    /// Takes paths and for each one of them tries to create a new fork of paths if the move is valid
+    /// e.g. if you give a point, and all next moves are valid, it will return an array of 8 paths (for the Knight chess piece)
+    /// - Parameter paths: Array of paths
+    /// - Returns: Array of updated paths ([paths[index] + newMove])
+    func calculatePaths(paths: [[TilePoint]]) -> [[TilePoint]] {
+        var extendedPaths: [[TilePoint]] = []
+        for path in paths {
             
-            let newPoint = startingPoint + move
-            let isBetweenBounds = newPoint.x >= 0
-                && newPoint.y >= 0
-                && newPoint.x < numberOfTiles
-                && newPoint.y < numberOfTiles
-            guard isBetweenBounds else { continue }
-            validMovesResult.append(newPoint)
+            guard let startingPoint = path.last else {
+                fatalError("Path is Empty!!!")
+            }
+            var validMoves: [TilePoint] = []
+            let possibleMoves = TilePoint.possibleKnighMoves
+            
+            for move in possibleMoves {
+                
+                let newPoint = startingPoint + move
+                let isBetweenBounds = newPoint.x >= 0
+                    && newPoint.y >= 0
+                    && newPoint.x < numberOfTiles
+                    && newPoint.y < numberOfTiles
+                guard isBetweenBounds else { continue }
+                validMoves.append(newPoint)
+            }
+            validMoves.forEach {
+                let extendedPath = path + [$0]
+                extendedPaths.append(extendedPath)
+            }
         }
-        
-        validMovesResult.forEach {
-            var updatedPath = pathUntilHere
-            updatedPath.append($0)
-            calculatePossibleMoves(pathUntilHere: updatedPath, moveCounter: moveCounter + 1)
-        }
+        return extendedPaths
     }
     
     /// Draws a line if the path array isn't empty & if it has reached the destination Point
@@ -211,13 +241,24 @@ private extension UIChessboardView {
             debugPrint("Path is Empty!!!")
             return
         }
-        guard destination == endingPoint else { return }
+        guard destination == endingPoint else {
+            totalPathsFailed += 1
+            return
+        }
+        DispatchQueue.main.async {
 //        let normalPath = path.buildKnightPath(mirrored: false)
 //        drawPath(normalPath)
 //        let mirroredPath = path.buildKnightPath(mirrored: true)
 //        drawPath(mirroredPath)
-        drawPath(path)
-        onPathCalculated?(path)
+            self.drawPath(path)
+            self.delegate?.didCalculate(path)
+        }
+    }
+    
+    func fireError() {
+        DispatchQueue.main.async {
+            self.delegate?.didFailFindingPaths()
+        }
     }
     
     /// Draws the Basier Path and animates it
