@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "epicentrofestival-chess-piece-horse-knight-horse-chess-piece-21t49nrzk7-720x416.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "epicentrofestival-chess-piece-horse-knight-horse-chess-piece-21t49nrzk7-720x416@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "epicentrofestival-chess-piece-horse-knight-horse-chess-piece-21t49nrzk7-720x416@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

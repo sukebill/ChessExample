@@ -22,6 +22,9 @@
 		D515ED3E248CE13600488DD6 /* SizeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED3D248CE13600488DD6 /* SizeError.swift */; };
 		D515ED41248CE3B200488DD6 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED40248CE3B200488DD6 /* SettingsVC.swift */; };
 		D515ED43248CE42000488DD6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED42248CE42000488DD6 /* SettingsViewController.swift */; };
+		D515ED72248CE60E00488DD6 /* ChessboardView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D515ED6E248CE5F400488DD6 /* ChessboardView.framework */; };
+		D515ED73248CE60E00488DD6 /* ChessboardView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D515ED6E248CE5F400488DD6 /* ChessboardView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D515ED86248D567800488DD6 /* PathTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515ED85248D567800488DD6 /* PathTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,35 @@
 			remoteGlobalIDString = D515ECF6248CDD9500488DD6;
 			remoteInfo = ChessMovement;
 		};
+		D515ED6D248CE5F400488DD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D515ED4E248CE5F300488DD6;
+			remoteInfo = ChessboardView;
+		};
+		D515ED6F248CE5F400488DD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D515ED57248CE5F300488DD6;
+			remoteInfo = ChessboardViewTests;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D515ED74248CE60E00488DD6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D515ED73248CE60E00488DD6 /* ChessboardView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D515ECF7248CDD9500488DD6 /* ChessMovement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessMovement.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +94,8 @@
 		D515ED3D248CE13600488DD6 /* SizeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeError.swift; sourceTree = "<group>"; };
 		D515ED40248CE3B200488DD6 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D515ED42248CE42000488DD6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChessboardView.xcodeproj; path = ../ChessboardView/ChessboardView.xcodeproj; sourceTree = "<group>"; };
+		D515ED85248D567800488DD6 /* PathTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D515ED72248CE60E00488DD6 /* ChessboardView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,10 +127,12 @@
 		D515ECEE248CDD9500488DD6 = {
 			isa = PBXGroup;
 			children = (
+				D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */,
 				D515ECF9248CDD9500488DD6 /* ChessMovement */,
 				D515ED10248CDD9900488DD6 /* ChessMovementTests */,
 				D515ED1B248CDD9900488DD6 /* ChessMovementUITests */,
 				D515ECF8248CDD9500488DD6 /* Products */,
+				D515ED71248CE60E00488DD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +228,7 @@
 			children = (
 				D515ED3B248CE0BC00488DD6 /* StartViewModel.swift */,
 				D515ED30248CDE8000488DD6 /* StartViewController.swift */,
+				D515ED85248D567800488DD6 /* PathTableViewCell.swift */,
 			);
 			path = StartVC;
 			sourceTree = "<group>";
@@ -205,6 +242,22 @@
 			path = SettingsVC;
 			sourceTree = "<group>";
 		};
+		D515ED69248CE5F300488DD6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D515ED6E248CE5F400488DD6 /* ChessboardView.framework */,
+				D515ED70248CE5F400488DD6 /* ChessboardViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D515ED71248CE60E00488DD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,6 +268,7 @@
 				D515ECF3248CDD9500488DD6 /* Sources */,
 				D515ECF4248CDD9500488DD6 /* Frameworks */,
 				D515ECF5248CDD9500488DD6 /* Resources */,
+				D515ED74248CE60E00488DD6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -295,6 +349,12 @@
 			mainGroup = D515ECEE248CDD9500488DD6;
 			productRefGroup = D515ECF8248CDD9500488DD6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D515ED69248CE5F300488DD6 /* Products */;
+					ProjectRef = D515ED68248CE5F300488DD6 /* ChessboardView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D515ECF6248CDD9500488DD6 /* ChessMovement */,
@@ -303,6 +363,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D515ED6E248CE5F400488DD6 /* ChessboardView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChessboardView.framework;
+			remoteRef = D515ED6D248CE5F400488DD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D515ED70248CE5F400488DD6 /* ChessboardViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChessboardViewTests.xctest;
+			remoteRef = D515ED6F248CE5F400488DD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D515ECF5248CDD9500488DD6 /* Resources */ = {
@@ -337,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D515ED35248CDF2300488DD6 /* AppStoryboard.swift in Sources */,
+				D515ED86248D567800488DD6 /* PathTableViewCell.swift in Sources */,
 				D515ECFB248CDD9500488DD6 /* AppDelegate.swift in Sources */,
 				D515ED37248CDF4800488DD6 /* UIViewControllerExtensions.swift in Sources */,
 				D515ED43248CE42000488DD6 /* SettingsViewController.swift in Sources */,

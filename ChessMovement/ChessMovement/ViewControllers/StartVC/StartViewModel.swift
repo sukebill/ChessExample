@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import ChessboardView
 
 struct StartViewModel {
     private (set) var numberOfTiles: Int
-    private let requiredMoves: Int
+    let requiredMoves: Int
     private let bottomRule: Int
     private let upperRule: Int
+    private (set) var paths: [[TilePoint]] = []
     
     init() {
         numberOfTiles = 8
@@ -37,5 +39,13 @@ extension StartViewModel {
             throw SizeError.tooBig(size: size, upperRule: upperRule)
         }
         numberOfTiles = size
+    }
+    
+    mutating func addPath( _ path: [TilePoint]) {
+        paths.append(path)
+    }
+    
+    mutating func clearPaths() {
+        paths = []
     }
 }

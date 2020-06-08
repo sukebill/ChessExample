@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import ChessboardView
 
 class StartViewController: UIViewController {
+    @IBOutlet var chessboard: UIChessboardView!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var failureView: UIView!
     
     private var viewModel: StartViewModel = StartViewModel()
 
@@ -35,15 +39,25 @@ class StartViewController: UIViewController {
 
 private extension StartViewController {
     private func setUpViews() {
-        // TODO: Set up chessboard
+        chessboard.setUp(knightIcon: UIImage(named: "knight"),
+                         requiredMoves: viewModel.requiredMoves)
+        chessboard.delegate = self
+        tableView.dataSource = self
     }
     
     private func refreshChessboard() {
-        // TODO: Refresh Chessboard
+        viewModel.clearPaths()
+        let numberOfTiles = viewModel.numberOfTiles
+        chessboard.refresh(withNumberOfTiles: numberOfTiles)
+        tableView.reloadData()
+        failureView.isHidden = true
     }
     
     private func clearChessboard() {
-        // TODO: Clear Chessboard from paths and starting - ending possitions
+        chessboard.clear()
+        viewModel.clearPaths()
+        tableView.reloadData()
+        failureView.isHidden = true
     }
 }
 
@@ -60,5 +74,33 @@ private extension StartViewController {
         } catch {
             showAlert(message: "Something went realy wrong!!!")
         }
+    }
+}
+
+// MARK: UI Chessboard Delegate
+
+extension StartViewController: UIChessboardDelegate {
+    func didCalculate(_ path: [TilePoint]) {
+        viewModel.addPath(path)
+        tableView.reloadData()
+    }
+    
+    func didFailFindingPaths() {
+        failureView.isHidden = false
+    }
+}
+
+// MARK: UI Table View Datasource
+
+extension StartViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.paths.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PathTableViewCell",
+                                                 for: indexPath) as! PathTableViewCell
+        cell.configure(with: viewModel.paths[indexPath.row])
+        return cell
     }
 }
